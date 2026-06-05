@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="max-width:500px;margin:auto">
+
+<h2>Ro'yxatdan o'tish</h2>
+
+<br>
+
+<form method="POST">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button class="btn">
+Ro'yxatdan o'tish
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}

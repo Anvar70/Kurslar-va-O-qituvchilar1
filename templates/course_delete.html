@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="delete-card">
+
+    <div class="warning-icon">
+        ⚠️
+    </div>
+
+    <h2>{{ course.title }}</h2>
+
+    <p class="warning-text">
+        Ushbu kursni o‘chirishni tasdiqlaysizmi?
+        Bu amalni keyinchalik bekor qilib bo‘lmaydi.
+    </p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="btn-group">
+            <a href="/" class="cancel-btn">
+                Bekor qilish
+            </a>
+
+            <button type="submit" class="delete-btn">
+                🗑 Ha, o‘chirish
+            </button>
+        </div>
+    </form>
+
+</div>
+
+<style>
+
+.delete-card{
+    max-width:600px;
+    margin:60px auto;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.warning-icon{
+    font-size:70px;
+    margin-bottom:20px;
+}
+
+.delete-card h2{
+    color:#6a0dad;
+    margin-bottom:20px;
+    font-size:30px;
+}
+
+.warning-text{
+    color:#666;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.cancel-btn{
+    text-decoration:none;
+    background:#e5e7eb;
+    color:#333;
+    padding:12px 25px;
+    border-radius:10px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cancel-btn:hover{
+    background:#d1d5db;
+    transform:translateY(-2px);
+}
+
+.delete-btn{
+    background:linear-gradient(135deg,#dc2626,#ef4444);
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(239,68,68,.3);
+}
+
+.delete-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(239,68,68,.4);
+}
+
+</style>
+
+{% endblock %}

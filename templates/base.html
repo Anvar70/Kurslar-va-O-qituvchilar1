@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kurslar va O'qituvchilar</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#f5f7ff,#eef2ff);
+    min-height:100vh;
+    color:#333;
+}
+
+/* NAVBAR */
+
+nav{
+    background:linear-gradient(135deg,#6a0dad,#8a2be2);
+    padding:18px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 4px 20px rgba(106,13,173,.25);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    transition:.3s;
+    font-weight:500;
+}
+
+.menu a:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-2px);
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+/* BUTTON */
+
+.btn{
+    background:linear-gradient(135deg,#6a0dad,#8a2be2);
+    color:white;
+    padding:12px 22px;
+    border:none;
+    border-radius:10px;
+    text-decoration:none;
+    display:inline-block;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(106,13,173,.25);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(106,13,173,.35);
+}
+
+/* CARD */
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+    transition:.3s;
+    margin-bottom:20px;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+
+.card h2{
+    margin-bottom:10px;
+    color:#6a0dad;
+}
+
+.card p{
+    line-height:1.7;
+    color:#555;
+}
+
+/* FORM */
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    margin-top:8px;
+    margin-bottom:15px;
+    outline:none;
+    transition:.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#8a2be2;
+    box-shadow:0 0 10px rgba(138,43,226,.2);
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+table th{
+    background:#6a0dad;
+    color:white;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+table tr:hover{
+    background:#faf7ff;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:25px;
+    color:#666;
+    margin-top:50px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .container{
+        width:95%;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<nav>
+
+<div class="logo">
+🎓 Kurslar
+</div>
+
+<div class="menu">
+
+<a href="/">Bosh sahifa</a>
+
+<a href="/teachers/">
+O'qituvchilar
+</a>
+
+{% if request.user.is_authenticated %}
+
+<a href="/course/create/">
+Kurs qo'shish
+</a>
+
+<a href="/logout/">
+Chiqish
+</a>
+
+{% else %}
+
+<a href="/login/">
+Kirish
+</a>
+
+<a href="/register/">
+Ro'yxatdan o'tish
+</a>
+
+{% endif %}
+
+</div>
+
+</nav>
+
+<div class="container">
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+<footer>
+© 2026 Kurslar va O'qituvchilar Platformasi
+</footer>
+
+</body>
+</html>
